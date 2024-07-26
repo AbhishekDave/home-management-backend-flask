@@ -1,17 +1,9 @@
-from flask import Flask
+# /app.py
 
-app = Flask(__name__)
+from src.apis import register_blueprint
+from src.configs.development_config import app
 
-
-@app.route('/')
-def hello_world():  # put application's code here
-    return 'Hello World!'
-
-
-@app.route('/log')
-def hello_forld():  # put application's code here
-    return 'Hello forld!'
-
+register_blueprint(app)
 
 if __name__ == '__main__':
     app.run()
