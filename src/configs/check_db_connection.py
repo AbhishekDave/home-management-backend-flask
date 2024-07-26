@@ -1,3 +1,5 @@
+# src/configs/check_db_connection.py
+
 from sqlalchemy import create_engine
 
 SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://tempuser:temppassword@localhost:3310/tempdatabase'
