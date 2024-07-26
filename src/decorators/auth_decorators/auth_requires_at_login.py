@@ -1,4 +1,4 @@
-# src/decorators/auth_decorators.py
+# src/decorators/auth_decorators/auth_requires_at_login.py
 
 from functools import wraps
 from flask import request, jsonify, g
