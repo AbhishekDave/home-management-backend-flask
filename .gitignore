@@ -17,7 +17,6 @@ gen
 .xml
 
 # Environments
-.env
 .venv
 env/
 venv/
