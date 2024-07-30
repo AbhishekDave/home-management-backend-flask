@@ -7,7 +7,7 @@ from src.decorators.auth_decorators.auth_requires_at_registration import auth_re
 from src.models.user_model import User
 from src.schemas.user_schema import UserSchema
 
-register_api_bp = Blueprint('register', __name__)
+register_api_bp = Blueprint('register_api', __name__)
 
 
 @register_api_bp.route('/register', methods=['POST'])
