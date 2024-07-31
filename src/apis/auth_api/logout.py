@@ -2,7 +2,7 @@
 
 from flask import jsonify, Blueprint
 from flask_jwt_extended import jwt_required, get_jwt
-from src.configs.development_config import ACCESS_EXPIRES_HOURS, ACCESS_EXPIRES_MINUTES, redis_client, \
+from src.configs.development_config import ACCESS_EXPIRES_MINUTES, redis_client, \
     CURRENT_TIME_AT_TIMEZONE
 
 logout_api_bp = Blueprint('logout_api', __name__)
