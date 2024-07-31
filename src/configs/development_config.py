@@ -1,44 +1,51 @@
+# src/configs/development_config.py
+
 from datetime import datetime, timedelta
 from zoneinfo import ZoneInfo
-import redis
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
-from src.configs.config import Config  # Import the Config class
-from src.utils.common_error_handlers import ErrorHandlers  # Import Error handler class
-# from src.utils.jwt_error_handlers import JWTErrorHandlers
+from sqlalchemy import create_engine
+
+from src.configs.development_configs import database_config, jwt_config, redis_config, cors_config
+from src.utils import common_error_handlers     # , jwt_error_handlers  # Import Error handler class
 
 app = Flask(__name__)
 
 # CORS configuration
-CORS(app, resources={r"/*": {"origins": ["http://localhost:5173", "http://localhost:4173"]}})
+CORS(app, resources={r"/*": {"origins": [f"{cors_config.CORSConfig.CORS_FRONTEND_URL_DEV_ENV}"]}})
 
 # Database URI
 app.config[
-    'SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{Config.MySQLConfig.MYSQL_USER}:{Config.MySQLConfig.MYSQL_PASSWORD}@localhost:3310/{Config.MySQLConfig.MYSQL_DATABASE}"
+    'SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{database_config.MySQLConfig.MYSQL_USER}:{database_config.MySQLConfig.MYSQL_PASSWORD}@localhost:3310/{database_config.MySQLConfig.MYSQL_DATABASE}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+try:
+    engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'])
+    print('\n')
+    print(engine)
+    connection = engine.connect()
+    print('\n')
+    print(engine)
+    print("\nConnection successful!")
+    connection.close()
+except Exception as e:
+    print(f"\nError: {e}")
+
 # JWT configuration
-app.config[
-    'JWT_SECRET_KEY'] = Config.JWTConfig.JWT_SECRET_KEY  # node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(minutes=Config.JWTConfig.JWT_ACCESS_TOKEN_EXPIRES)
-app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=Config.JWTConfig.JWT_REFRESH_TOKEN_EXPIRES)
+# node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+app.config['JWT_SECRET_KEY'] = jwt_config.JWTConfig.JWT_SECRET_KEY
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(minutes=jwt_config.JWTConfig.ACCESS_TOKEN_EXPIRES_IN_1_MIN)
+app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=jwt_config.JWTConfig.REFRESH_TOKEN_EXPIRES_IN_1_DAY)
 
 # Access token expiration settings
 CURRENT_TIME_AT_TIMEZONE = datetime.now(ZoneInfo('UTC'))
-ACCESS_EXPIRES_MINUTES = timedelta(minutes=1)
-ACCESS_EXPIRES_HOURS = timedelta(hours=1)
+ACCESS_EXPIRES_MINUTES = jwt_config.JWTConfig.ACCESS_TOKEN_EXPIRES_IN_1_MIN
 
 # Initialize Redis
-redis_client = redis.StrictRedis(
-    host=Config.REDISConfig.REDIS_HOST,
-    port=Config.REDISConfig.REDIS_PORT,
-    db=Config.REDISConfig.REDIS_DB,
-    password=Config.REDISConfig.REDIS_PASSWORD,
-    decode_responses=True
-)
+redis_client = redis_config.REDISConfig.redis_client  # Access the redis_client from REDISConfig
 
 # Set up SQLAlchemy
 db = SQLAlchemy(app)
@@ -50,5 +57,5 @@ jwt = JWTManager(app)
 migrate = Migrate(app, db)
 
 # Centralizing Error handlers for my app
-ErrorHandlers.register_error_handlers(app)
+common_error_handlers.ErrorHandlers.register_error_handlers(app)
 # JWTErrorHandlers.register_error_handlers(app)
