@@ -1,7 +1,7 @@
 # src/apis/auth_api/registration.py
 
 from flask import request, jsonify, Blueprint
-from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_access_token, create_refresh_token
 from src.configs.development_config import db
 from src.decorators.auth_decorators.auth_requires_at_registration import auth_requires_at_registration
 from src.models.user_model import User
@@ -30,8 +30,9 @@ def register():
     # Create response (excluding password)
     user_data = user_schema.dump(new_user)
     access_token = create_access_token(identity=new_user.id)
+    refresh_token = create_refresh_token(identity=new_user.id)
 
     # Created and Excluded password from response because of @post_dump
-    return jsonify(message="User created successfully", access_token = access_token, user=user_data), 201
+    return jsonify(message="User created successfully", access_token=access_token, refresh_token=refresh_token, user=user_data), 201
 
 

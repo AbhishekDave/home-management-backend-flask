@@ -13,10 +13,10 @@ logout_api_bp = Blueprint('logout_api', __name__)
 def logout():
     token = get_jwt()
     jti = token["jti"]
-    ttype = token["type"]
+    token_type = token["type"]
 
     # Blacklist the token
     expiration_time = CURRENT_TIME_AT_TIMEZONE + ACCESS_EXPIRES_MINUTES
-    redis_client.setex(jti, int(expiration_time.timestamp()), ttype)
+    redis_client.setex(jti, int(expiration_time.timestamp()), token_type)
 
-    return jsonify(msg=f"Logout Successfully with {ttype.capitalize()} token successfully blacklisted."), 200
+    return jsonify(msg=f"Logout Successfully with {token_type.capitalize()} token successfully blacklisted."), 401
