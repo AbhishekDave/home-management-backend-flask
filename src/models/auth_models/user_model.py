@@ -1,4 +1,4 @@
-# /src/models/user_model.py
+# /src/models/auth_models/user_model.py
 
 from datetime import datetime
 from zoneinfo import ZoneInfo
