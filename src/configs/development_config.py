@@ -12,6 +12,9 @@ from sqlalchemy import create_engine
 from src.configs.development_configs import database_config, jwt_config, redis_config, cors_config
 from src.utils import common_error_handlers     # , jwt_error_handlers  # Import Error handler class
 
+# Just Import models to attach with flask migrate
+import src.models
+
 app = Flask(__name__)
 
 # CORS configuration

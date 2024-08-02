@@ -2,7 +2,7 @@
 
 from functools import wraps
 from flask import request, jsonify, g
-from src.models.user_model import User
+from src.models.auth_models.user_model import User
 
 
 def auth_requires_at_login(f):
