@@ -5,7 +5,7 @@ from flask_jwt_extended import create_access_token, create_refresh_token
 from src.configs.development_config import db
 from src.decorators.auth_decorators.auth_requires_at_registration import auth_requires_at_registration
 from src.models.auth_models.user_model import User
-from src.schemas.user_schema import UserSchema
+from src.schemas.auth_schemas.user_schema import UserSchema
 
 register_api_bp = Blueprint('register_api', __name__)
 

@@ -40,14 +40,14 @@ except Exception as e:
 # JWT configuration
 # node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 app.config['JWT_SECRET_KEY'] = jwt_config.JWTConfig.JWT_SECRET_KEY
-app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=jwt_config.JWTConfig.ACCESS_TOKEN_EXPIRES_IN_1_DAY)
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=jwt_config.JWTConfig.ACCESS_TOKEN_EXPIRES_IN_1_DAY)
 app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=jwt_config.JWTConfig.REFRESH_TOKEN_EXPIRES_IN_30_DAY)
 
 print(f"\nJWT Expire in {app.config["JWT_ACCESS_TOKEN_EXPIRES"]}")
 
 # Access token expiration settings
 CURRENT_TIME_AT_TIMEZONE = datetime.now(ZoneInfo('UTC'))
-ACCESS_EXPIRES_MINUTES = timedelta(minutes=jwt_config.JWTConfig.ACCESS_TOKEN_EXPIRES_IN_1_DAY)
+ACCESS_EXPIRES_MINUTES = timedelta(days=jwt_config.JWTConfig.ACCESS_TOKEN_EXPIRES_IN_1_DAY)
 REFRESH_EXPIRES_DAYS = timedelta(days=jwt_config.JWTConfig.REFRESH_TOKEN_EXPIRES_IN_30_DAY)
 
 # Initialize Redis

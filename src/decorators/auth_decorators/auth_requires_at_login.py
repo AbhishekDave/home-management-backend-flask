@@ -23,15 +23,20 @@ def auth_requires_at_login(f):
 
         # Check if the credential is a username or email
         user = User.query.filter(
-            (User.username == credential)
+            (User.username == credential) | (User.email_id == credential)
         ).first()
 
-        u = user
-
-        if not user or not user.check_password(password):              # if not user or not user.check_password(password):
+        if not user or not user.check_password(password):  # if not user or not user.check_password(password):
             return jsonify({'message': 'Invalid credentials, please try again.'}), 401
 
+        # Check if the user is active or not
+        print(user.is_active)
+
+        if not user.is_active:
+            return jsonify({'message': 'Oops, User account does not activated, Please contact admin.'}), 401
+
         g.user = user  # Attach the user to the request for use in the view function
+
         return f(*args, **kwargs)
 
     return decorated

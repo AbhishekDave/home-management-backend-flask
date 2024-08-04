@@ -14,12 +14,12 @@ class User(db.Model):
     username = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     email_id = db.Column(db.String(255), unique=True, nullable=False)
-    address = db.Column(db.String(255), unique=True, nullable=True)
+    address = db.Column(db.String(255), nullable=True)
     phone = db.Column(db.String(255), unique=True, nullable=True)
     is_active = db.Column(db.Boolean, default=True, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.now(ZoneInfo('UTC')))
 
-    grocery_types = db.relationship('GroceryType', secondary='user_grocery_type', backref='users')
+    grocery_types = db.relationship('GroceryType', secondary='user_grocery_type', backref=db.backref('users', lazy='dynamic'))
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
