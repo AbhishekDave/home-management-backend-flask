@@ -8,3 +8,4 @@ load_dotenv()
 
 class CORSConfig:
     CORS_FRONTEND_URL_DEV_ENV = os.environ.get('CORS_FRONTEND_URL_DEV_ENV')
+    API_VERSION = os.environ.get('API_VERSION')
