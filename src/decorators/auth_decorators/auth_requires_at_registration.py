@@ -1,8 +1,8 @@
 # # src/decorators/auth_decorators/auth_requires_at_registration.py
 
 from functools import wraps
-from flask import request, jsonify, g
-from src.models.user_model import User
+from flask import request, jsonify
+from src.models.auth_models.user_model import User
 
 
 def auth_requires_at_registration(f):
