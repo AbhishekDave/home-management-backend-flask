@@ -13,5 +13,5 @@ class Product(db.Model):
     grocery_type_id = db.Column(db.Integer, db.ForeignKey('grocery_type.id'), nullable=False)
     store_id = db.Column(db.Integer, db.ForeignKey('store.id'), nullable=False)
 
-    stores = db.relationship('Store', backref='products', lazy=True)
-    grocery_types = db.relationship('GroceryType', backref='products', lazy=True)
+    stores = db.relationship('Store', backref=db.backref('products', lazy='dynamic'))
+    grocery_types = db.relationship('GroceryType', backref=db.backref('products', lazy='dynamic'))
