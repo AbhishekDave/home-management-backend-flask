@@ -1,10 +1,9 @@
 # /app.py
 
 from src.apis import register_blueprint
-# from src.configs import load_configurations
-from src.configs.development_config import app
+from src.configs.development_config import create_app
 
-# app = load_configurations()
+app = create_app()
 
 # Register error handlers
 register_blueprint(app)
