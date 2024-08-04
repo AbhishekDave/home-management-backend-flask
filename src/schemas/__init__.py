@@ -1,4 +1,7 @@
-from ..schemas.auth_schemas import user_schema
-from ..schemas.grocery_schemas import grocery_type_schema, store_schema, product_schema
-from ..schemas.mapping_schemas import user_grocery_type_schema
+# src/schemas/__init__.py
 
+from .auth_schemas.user_schema import User
+from .grocery_schemas.grocery_type_schema import GroceryType
+from .grocery_schemas.store_schema import Store
+from .grocery_schemas.product_schema import Product
+from .mapping_schemas.user_grocery_type_schema import UserGroceryType
