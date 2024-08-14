@@ -2,7 +2,7 @@
 
 from flask import jsonify, Blueprint, json
 from flask_jwt_extended import jwt_required, get_jwt
-from src.configs.development_config import ACCESS_EXPIRES_MINUTES, redis_client, \
+from src.configs.development_config import ACCESS_EXPIRES_MINUTES, REDIS_CLIENT, \
     CURRENT_TIME_AT_TIMEZONE
 
 logout_api_bp = Blueprint('logout_api', __name__)
@@ -17,6 +17,6 @@ def logout():
 
     # Blacklist the token
     expiration_time = CURRENT_TIME_AT_TIMEZONE + ACCESS_EXPIRES_MINUTES
-    redis_client.setex(jti, int(expiration_time.timestamp()), json.dumps(token))
+    REDIS_CLIENT.setex(jti, int(expiration_time.timestamp()), json.dumps(token))
 
     return jsonify(message=f"Logout Successfully with {token_type.capitalize()} token successfully blacklisted."), 401

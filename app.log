@@ -1,0 +1,40 @@
+2024-08-05 13:55:25,189 - src.configs.development_config - INFO - Grocery type added: Monthly Grocery by user: 9
+2024-08-05 13:56:59,971 - src.configs.development_config - INFO - Grocery type added: 
+Name - Monthly Grocery 
+by user: 9
+2024-08-05 13:57:36,342 - src.configs.development_config - INFO - 
+Grocery type added: 
+Name - Monthly Grocery 
+by user: 9
+2024-08-05 13:59:43,502 - src.configs.development_config - INFO - 
+Request URL: http://127.0.0.1:5000/v1/grocery/grocery_types
+2024-08-05 13:59:43,605 - src.configs.development_config - INFO - 
+Grocery type added: 
+Name - Monthly Grocery 
+by user: 9
+2024-08-05 14:00:02,204 - src.configs.development_config - INFO - 
+Request URL: http://127.0.0.1:5000/v1/grocery/grocery_types
+2024-08-05 14:00:02,400 - src.configs.development_config - INFO - 
+Grocery type added: 
+Name - Monthly Grocery 
+by user: 9
+2024-08-05 15:46:23,212 - src.configs.development_config - INFO - 
+Request URL: http://127.0.0.1:5000/v1/stores
+2024-08-05 15:46:23,346 - src.configs.development_config - INFO - 
+Store added: 
+Name -  
+by user: 9
+2024-08-05 15:55:42,912 - src.configs.development_config - INFO - 
+Request URL: http://127.0.0.1:5000/v1/stores
+2024-08-05 16:14:47,082 - src.configs.development_config - INFO - 
+Request URL: http://127.0.0.1:5000/v1/grocery_types
+2024-08-05 16:14:47,150 - src.configs.development_config - INFO - 
+Grocery type added: 
+Name - a 
+by user: 9
+2024-08-05 16:18:45,857 - src.configs.development_config - INFO - 
+Request URL: http://127.0.0.1:5000/v1/grocery_types
+2024-08-05 16:18:45,936 - src.configs.development_config - INFO - 
+Grocery type added: 
+Name - Wk 
+by user: 9
