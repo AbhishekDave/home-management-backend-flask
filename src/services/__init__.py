@@ -1,7 +1,7 @@
 # src/services/__init__.py
 
 # user_services
-from .user_services.user_creation_service import UserCreationService
-from .user_services.user_authentication_service import UserAuthenticationService
-from .user_services.user_retrieval_service import UserRetrievalService
-from .user_services.user_serialization_service import UserSerializationService
+from .user_services import UserService
+
+# serialization_services
+from src.services.serialization_services.user_serialization_service import UserSerializationService
