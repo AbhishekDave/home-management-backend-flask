@@ -4,9 +4,8 @@ from functools import wraps
 from flask import request, g
 
 from src.configs.development_config import db
-from src.services.user_service import UserService
-from src.utils.exceptions import (MethodNotAllowedException, MissingCredentialsException,
-                                  CredentialsUnauthorizedException, MissingDataException)
+from src.services.user_services.user_authentication_service import UserAuthenticationService
+from src.utils.error_handling_utility.exceptions import (MethodNotAllowedException, CredentialsUnauthorizedException, MissingDataException)
 
 
 def auth_requires_at_login(f):
@@ -15,7 +14,7 @@ def auth_requires_at_login(f):
         if request.method != 'POST':
             raise MethodNotAllowedException('Method not allowed.')
 
-        user_service = UserService(db)
+        user_authentication_service = UserAuthenticationService(db)
         user_data = request.get_json()
         if not user_data:
             raise MissingDataException('No input data provided.')
@@ -24,7 +23,7 @@ def auth_requires_at_login(f):
         password = user_data.get('password')
 
         # Check if the user logging with correct username or email
-        user = user_service.authenticate_user(username, password)
+        user = user_authentication_service.authenticate_user(username, password)
         if user is None:
             raise CredentialsUnauthorizedException('Invalid credentials, please try again.')
 

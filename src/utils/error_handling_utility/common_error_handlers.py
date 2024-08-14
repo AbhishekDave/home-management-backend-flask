@@ -2,7 +2,7 @@ from zoneinfo import ZoneInfo
 
 from flask import jsonify
 from datetime import datetime
-from src.utils.exceptions import (
+from src.utils.error_handling_utility.exceptions import (
     MissingDataException, MissingCredentialsException, CredentialsUnauthorizedException,
     MethodNotAllowedException, NotFoundException, ConflictException, TokenUnauthorizedException,
     UnprocessableEntityException, PreconditionFailedException, GatewayTimeoutException, InternalServerException,
