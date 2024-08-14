@@ -1,39 +1,38 @@
 # src/decorators/auth_decorators/auth_requires_at_login.py
 
 from functools import wraps
-from flask import request, jsonify, g
-from src.models.auth_models.user_model import User
+from flask import request, g
+
+from src.configs.development_config import db
+from src.services.user_service import UserService
+from src.utils.exceptions import (MethodNotAllowedException, MissingCredentialsException,
+                                  CredentialsUnauthorizedException, MissingDataException)
 
 
 def auth_requires_at_login(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         if request.method != 'POST':
-            return jsonify({'message': 'Method not allowed.'}), 405
+            raise MethodNotAllowedException('Method not allowed.')
 
-        data = request.get_json()
-        if not data:
-            return jsonify({'message': 'No input data provided.'}), 400
+        user_service = UserService(db)
+        user_data = request.get_json()
+        if not user_data:
+            raise MissingDataException('No input data provided.')
 
-        credential = data.get('credential')
-        password = data.get('password')
+        username = user_data.get('username')
+        password = user_data.get('password')
 
-        if not credential or not password:
-            return jsonify({'message': 'Missing credentials.'}), 400
-
-        # Check if the credential is a username or email
-        user = User.query.filter(
-            (User.username == credential) | (User.email_id == credential)
-        ).first()
-
-        if not user or not user.check_password(password):  # if not user or not user.check_password(password):
-            return jsonify({'message': 'Invalid credentials, please try again.'}), 401
+        # Check if the user logging with correct username or email
+        user = user_service.authenticate_user(username, password)
+        if user is None:
+            raise CredentialsUnauthorizedException('Invalid credentials, please try again.')
 
         # Check if the user is active or not
         print(user.is_active)
 
         if not user.is_active:
-            return jsonify({'message': 'Oops, User account does not activated, Please contact admin.'}), 401
+            raise CredentialsUnauthorizedException('Oops, User\'\'s account is inactive, Please contact admin.')
 
         g.user = user  # Attach the user to the request for use in the view function
 

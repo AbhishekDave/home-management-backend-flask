@@ -1,29 +1,28 @@
 # # src/decorators/auth_decorators/auth_requires_at_registration.py
 
 from functools import wraps
-from flask import request, jsonify
-from src.models.auth_models.user_model import User
+from flask import request
+
+from src.configs.development_config import db
+from src.utils.exceptions import MissingDataException, ConflictException
+from src.services.user_service import UserService
 
 
 def auth_requires_at_registration(f):
     @wraps(f)
     def decorated(*args, **kwargs):
-        data = request.get_json()
-        if not data:
-            return jsonify({'message': 'No input data provided.'}), 400
 
-        username = data.get('username')
-        password = data.get('password')
+        user_service = UserService(db)
+        user_data = request.get_json()
+        if not user_data:
+            raise MissingDataException('No input data provided.')
 
-        if not username or not password:
-            return jsonify({'message': 'Required fields are missing. Please try again.'}), 400
+        user_by_username = user_service.find_user_by_username(user_data['username'])
+        user_by_email = user_service.find_user_by_email(user_data['email'])
 
-        user_by_username = User.query.filter_by(username=username).first()
-
-        if user_by_username:
-            return jsonify({'message': 'User already exists.'}), 400
+        if user_by_username or user_by_email:
+            raise ConflictException('User already exists.')
 
         return f(*args, **kwargs)
 
     return decorated
-

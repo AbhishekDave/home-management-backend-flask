@@ -3,12 +3,14 @@
 from flask import Blueprint, jsonify
 from flask_jwt_extended import create_refresh_token, create_access_token
 from src.decorators.auth_decorators.auth_requires_at_login import auth_requires_at_login, g
-
+from src.decorators.unified_decorators.validate_request import validate_request
+from src.schemas.auth_schemas.user_login_schema import UserLoginSchema
 
 login_api_bp = Blueprint('login_api', __name__)
 
 
 @login_api_bp.route('/login', methods=['POST'])
+@validate_request('POST', schema=UserLoginSchema())
 @auth_requires_at_login
 def login():
     """
