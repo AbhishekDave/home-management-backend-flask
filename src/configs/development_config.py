@@ -13,6 +13,8 @@ from src.configs.development_configs import database_config, jwt_config, redis_c
 from src.configs.development_configs.cors_config import CORSConfig
 from src.utils import common_error_handlers     # , jwt_error_handlers  # Import Error handler class
 
+from src.utils.configure_logging import configure_logging
+
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -49,6 +51,9 @@ def create_app():
     migrate.init_app(app, db)
     jwt.init_app(app)
 
+    # Configure Logging
+    configure_logging(app)
+
     # CORS configuration
     CORS(app, resources={r"/*": {"origins": [f"{cors_config.CORSConfig.CORS_FRONTEND_URL_DEV_ENV}"]}})
 
@@ -71,6 +76,6 @@ def create_app():
 
     # Import models here to avoid circular imports
     with app.app_context():
-        from src.models import User, GroceryType, Store, Product, UserGroceryType  # Explicit imports
+        from src.models import User, GroceryName, GroceryItem, Store, Product, StoreProductMapping  # Explicit imports
 
     return app

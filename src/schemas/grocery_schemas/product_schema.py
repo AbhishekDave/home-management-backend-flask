@@ -1,26 +1,25 @@
 # src/schemas/grocery_schemas/product_schema.py
 
+from datetime import datetime
 from marshmallow import Schema, fields, validate
-from src.models.grocery_models.product_model import Product
+from src.models.grocery_models.grocery_item_model import GroceryItem
 
 
 class ProductSchema(Schema):
     class Meta:
-        model = Product
+        model = GroceryItem
 
     id = fields.Integer(dump_only=True)
     name = fields.String(required=True, validate=validate.Length(min=1, max=80))
-    price = fields.Float(required=True)
-    product_type = fields.String(required=True, validate=validate.Length(min=1, max=80))
-    expiry_date = fields.Date(required=True)
-    grocery_type_id = fields.Integer(required=True)
-    store_id = fields.Integer(required=True)
+    type = fields.String(required=True, validate=validate.Length(min=1, max=80))
+    created_at = fields.DateTime(dump_only=True)
+    modified_at = fields.DateTime(dump_only=True)
 
     # add nested schemas for relationships
     @property
     def grocery_type(self):
-        from src.schemas.grocery_schemas.grocery_type_schema import GroceryTypeSchema
-        return fields.Nested(GroceryTypeSchema, dump_only=True)
+        from src.schemas.grocery_schemas.grocery_name_schema import GroceryNameSchema
+        return fields.Nested(GroceryNameSchema, dump_only=True)
 
     @property
     def store(self):
@@ -30,4 +29,3 @@ class ProductSchema(Schema):
 
 product_schema = ProductSchema()
 products_schema = ProductSchema(many=True)
-

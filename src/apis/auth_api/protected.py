@@ -2,6 +2,7 @@
 
 from flask import Blueprint, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from src.utils.exceptions import InternalServerException
 
 protected_api_bp = Blueprint('protected_api', __name__)
 
@@ -24,7 +25,7 @@ def protected():
         # Return a JSON response with user information
         return jsonify(logged_in_as=current_user), 200
 
-    except Exception as e:
+    except InternalServerException:
 
-        # Return an appropriate error response
-        return jsonify(message="An error occurred while processing the request.", error=str(e)), 500
+        # Raise an exception with appropriate error response
+        raise InternalServerException('An error occurred while processing the request.')

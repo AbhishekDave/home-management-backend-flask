@@ -1,0 +1,39 @@
+{"time": "2024-08-05 16:33:32,508", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery_types"}
+{"time": "2024-08-05 16:33:32,658", "level": "INFO", "message": "\nGrocery type added: \nName - Wk \nby user: 9"}
+{"time": "2024-08-05 16:34:06,114", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery_types"}
+{"time": "2024-08-05 16:34:06,136", "level": "INFO", "message": "\nGrocery type added: \nName - weekly grocery \nby user: 9"}
+{"time": "2024-08-05 16:42:53,845", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery_types"}
+{"time": "2024-08-05 16:42:53,858", "level": "INFO", "message": "\nGrocery type added: \nName - weekly grocery \nby user: 9"}
+{"time": "2024-08-05 16:46:46,828", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery_types"}
+{"time": "2024-08-05 16:46:46,860", "level": "INFO", "message": "\nGrocery type added: \nName - Fresh Produce \nby user: 9"}
+{"time": "2024-08-08 21:12:50,919", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-08 21:16:04,077", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-08 21:17:00,215", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-10 15:41:58,459", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-10 15:43:05,044", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-10 16:14:55,022", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-10 16:15:36,858", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-10 16:17:39,718", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-10 16:19:45,444", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-10 16:21:25,406", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-10 16:23:38,928", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-10 16:52:07,530", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-10 18:34:48,955", "level": "ERROR", "message": "Exception on /v1/auth/trigger_401 [GET]"}
+{"time": "2024-08-10 18:35:15,310", "level": "ERROR", "message": "Exception on /v1/auth/trigger_401 [GET]"}
+{"time": "2024-08-10 18:35:49,409", "level": "ERROR", "message": "Exception on /v1/auth/trigger_401 [GET]"}
+{"time": "2024-08-10 18:42:41,994", "level": "ERROR", "message": "Exception on /v1/auth/trigger_401 [GET]"}
+{"time": "2024-08-10 18:43:05,110", "level": "ERROR", "message": "Exception on /v1/auth/trigger_401 [GET]"}
+{"time": "2024-08-10 18:49:10,927", "level": "ERROR", "message": "Exception on /v1/auth/trigger_401 [GET]"}
+{"time": "2024-08-10 18:49:12,380", "level": "ERROR", "message": "Exception on /v1/auth/trigger_401 [GET]"}
+{"time": "2024-08-10 18:53:18,057", "level": "ERROR", "message": "Exception on /v1/auth/trigger_401 [GET]"}
+{"time": "2024-08-12 18:13:21,239", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-12 18:14:02,738", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-12 18:21:23,246", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-12 18:21:31,678", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-12 18:24:53,517", "level": "ERROR", "message": "Exception on /v1/auth/register [POST]"}
+{"time": "2024-08-12 18:37:51,975", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-12 18:38:04,663", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-12 18:41:06,162", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-12 18:44:16,457", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-12 21:27:30,606", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-12 21:32:24,705", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}

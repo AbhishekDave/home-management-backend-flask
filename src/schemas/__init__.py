@@ -1,7 +1,15 @@
 # src/schemas/__init__.py
 
-from .auth_schemas.user_schema import User
-from .grocery_schemas.grocery_type_schema import GroceryType
-from .grocery_schemas.store_schema import Store
-from .grocery_schemas.product_schema import Product
-from .mapping_schemas.user_grocery_type_schema import UserGroceryType
+# auth models
+from .auth_schemas.complete_user_schema import CompleteUserSchema
+from .auth_schemas.user_login_schema import UserLoginSchema
+from .auth_schemas.user_registration_schema import UserRegistrationSchema
+
+# grocery models
+from .grocery_schemas.grocery_name_schema import GroceryNameSchema
+from .grocery_schemas.grocery_item_schema import GroceryItemSchema
+from .grocery_schemas.store_schema import StoreSchema
+from .grocery_schemas.product_schema import ProductSchema
+
+# mapping models
+from .mapping_schemas.store_product_mapping_schema import StoreProductMappingSchema
