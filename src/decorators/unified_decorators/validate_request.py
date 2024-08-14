@@ -4,7 +4,7 @@ from functools import wraps
 from flask import request, jsonify, g
 from marshmallow import ValidationError
 
-from src.utils.exceptions import MethodNotAllowedException, UnsupportedMediaTypeException, MissingDataException
+from src.utils.error_handling_utility.exceptions import MethodNotAllowedException, UnsupportedMediaTypeException, MissingDataException
 
 
 def validate_request(method, schema=None):

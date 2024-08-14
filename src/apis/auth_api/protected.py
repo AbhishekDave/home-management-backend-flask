@@ -2,7 +2,7 @@
 
 from flask import Blueprint, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from src.utils.exceptions import InternalServerException
+from src.utils.error_handling_utility.exceptions import InternalServerException
 
 protected_api_bp = Blueprint('protected_api', __name__)
 

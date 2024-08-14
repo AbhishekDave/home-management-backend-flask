@@ -11,9 +11,9 @@ from sqlalchemy import create_engine
 
 from src.configs.development_configs import database_config, jwt_config, redis_config, cors_config
 from src.configs.development_configs.cors_config import CORSConfig
-from src.utils import common_error_handlers     # , jwt_error_handlers  # Import Error handler class
+from src.utils.error_handling_utility import common_error_handlers
 
-from src.utils.configure_logging import configure_logging
+from src.utils.logging_utility.configure_logging import configure_logging
 
 
 db = SQLAlchemy()
@@ -76,6 +76,6 @@ def create_app():
 
     # Import models here to avoid circular imports
     with app.app_context():
-        from src.models import User, GroceryName, GroceryItem, Store, Product, StoreProductMapping  # Explicit imports
+        pass
 
     return app
