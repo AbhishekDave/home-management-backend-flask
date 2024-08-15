@@ -65,7 +65,7 @@ class CompleteUserSchema(Schema):
     @property
     def grocery_names(self):
         from src.schemas.grocery_schemas.grocery_name_schema import GroceryNameSchema
-        return fields.List(fields.Nested(GroceryNameSchema, many=True), dump_only=True)
+        return fields.List(fields.Nested(GroceryNameSchema, many=True), dump_only=True)     # type: ignore
 
 
 user_schema = CompleteUserSchema()
