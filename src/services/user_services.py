@@ -1,4 +1,7 @@
-from marshmallow import ValidationError
+# src/services/user_services.py
+
+from flask_jwt_extended import get_jwt_identity
+
 from src.repositories.user_repository import UserRepository, User
 from src.schemas.auth_schemas.complete_user_schema import CompleteUserSchema
 from src.schemas.auth_schemas.user_login_schema import UserLoginSchema
@@ -26,6 +29,11 @@ class UserService:
         return user
 
     # READ Operations
+    @staticmethod
+    def find_current_user():
+        current_user = get_jwt_identity()
+        return current_user
+
     def find_user_by_id(self, user_id):
         """
         Finds a user by their unique ID.

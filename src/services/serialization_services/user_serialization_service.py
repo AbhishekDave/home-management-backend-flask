@@ -1,3 +1,5 @@
+# src/services/serialization_services/user_serialization.py
+
 from src.schemas.auth_schemas.complete_user_schema import CompleteUserSchema
 from src.schemas.auth_schemas.user_login_schema import UserLoginSchema
 from src.schemas.auth_schemas.user_registration_schema import UserRegistrationSchema
