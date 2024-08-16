@@ -37,3 +37,26 @@
 {"time": "2024-08-12 18:44:16,457", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
 {"time": "2024-08-12 21:27:30,606", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
 {"time": "2024-08-12 21:32:24,705", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-16 15:55:22,030", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 15:59:33,530", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 15:59:33,531", "level": "ERROR", "message": "\nAn unexpected error occurred: An error occurred while saving the grocery name: 'grocery_name'"}
+{"time": "2024-08-16 16:00:40,742", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:03:53,428", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:04:47,679", "level": "INFO", "message": "\nAdded Grocery Name Data: <GroceryName 1> \nAdded by user: 3"}
+{"time": "2024-08-16 16:04:50,084", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 16:13:33,910", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:13:33,933", "level": "ERROR", "message": "\nAn unexpected error occurred: An error occurred while saving the grocery name: Grocery Name: Dairy List already exists with you. \nPlease add a different grocery name."}
+{"time": "2024-08-16 16:15:15,000", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:15:15,045", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 16:17:00,472", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:17:00,511", "level": "INFO", "message": "\nAdded Grocery Name Data: Grocery Name: Dairy List already exists with you. \nPlease add a different grocery name. \nAdded by user: 3"}
+{"time": "2024-08-16 16:20:21,497", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:20:21,528", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 16:21:54,852", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:21:54,884", "level": "INFO", "message": "\nAdded Grocery Name Data: <GroceryName (transient 2675536627568)> \nAdded by user: 3"}
+{"time": "2024-08-16 16:23:04,470", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:23:04,503", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 16:29:13,993", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:30:41,741", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:31:16,650", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:31:16,662", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}

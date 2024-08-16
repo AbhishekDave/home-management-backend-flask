@@ -29,3 +29,11 @@
 {"time": "2024-08-12 18:44:16,457", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
 {"time": "2024-08-12 21:27:30,606", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
 {"time": "2024-08-12 21:32:24,705", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-16 15:55:22,030", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 15:59:33,531", "level": "ERROR", "message": "\nAn unexpected error occurred: An error occurred while saving the grocery name: 'grocery_name'"}
+{"time": "2024-08-16 16:04:50,084", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 16:13:33,933", "level": "ERROR", "message": "\nAn unexpected error occurred: An error occurred while saving the grocery name: Grocery Name: Dairy List already exists with you. \nPlease add a different grocery name."}
+{"time": "2024-08-16 16:15:15,045", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 16:20:21,528", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 16:23:04,503", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 16:31:16,662", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
