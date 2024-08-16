@@ -8,8 +8,8 @@ from src.configs.development_config import db
 class GroceryName(db.Model):
     __tablename__ = 'grocery_name'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=True, nullable=False)    # ABC List, GYM List, etc
-    type = db.Column(db.String(80), unique=True, nullable=False)    # Weekly, Monthly, Daily, etc
+    name = db.Column(db.String(80), nullable=False)    # ABC List, GYM List, etc
+    grocery_type = db.Column(db.String(80), nullable=False)    # Weekly, Monthly, Daily, etc
     created_at = db.Column(db.DateTime, default=datetime.now(ZoneInfo('UTC')))
     modified_at = db.Column(db.DateTime, default=datetime.now(ZoneInfo('UTC')))
     is_active = db.Column(db.Boolean, default=True)
