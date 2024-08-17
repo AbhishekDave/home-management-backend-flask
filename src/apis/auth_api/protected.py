@@ -24,10 +24,10 @@ def protected():
     user_Service = UserService(db)
     try:
         # Retrieve the identity of the current user
-        current_user = user_Service.find_current_user()
+        current_user_id = user_Service.find_current_user_id()
 
         # Return a JSON response with user information
-        return jsonify(logged_in_as=current_user), 200
+        return jsonify(logged_in_as=current_user_id), 200
 
     except InternalServerException:
 

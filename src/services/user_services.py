@@ -30,7 +30,7 @@ class UserService:
 
     # READ Operations
     @staticmethod
-    def find_current_user():
+    def find_current_user_id():
         current_user = get_jwt_identity()
         return current_user
 
@@ -95,47 +95,3 @@ class UserService:
 
     # DELETE Operations
     # Implement delete operations if needed, e.g., def delete_user(self, user_id): ...
-
-    # Serialization Operations
-    def dump_complete_user_schema(self, user):
-        """
-        Serializes a user object using the CompleteUserSchema.
-
-        :param user: The user object to serialize.
-        :return: Serialized user data.
-        """
-        return self.complete_user_schema.dump(user)
-
-    def dump_user_registration_schema(self, user):
-        """
-        Serializes a user object using the UserRegistrationSchema.
-
-        :param user: The user object to serialize.
-        :return: Serialized user data.
-        """
-        return self.user_registration_schema.dump(user)
-
-    def dump_user_login_schema(self, user):
-        """
-        Serializes a user object using the UserLoginSchema.
-
-        :param user: The user object to serialize.
-        :return: Serialized user data.
-        """
-        return self.user_login_schema.dump(user)
-
-    @staticmethod
-    def dump_all_users(user, fields=None):
-        """
-        Serializes the user object using the CompleteUserSchema.
-
-        :param user: The user object to serialize.
-        :param fields: Optional list of fields to include in the output.
-        :return: Serialized user data.
-        """
-        if not fields:
-            schema = CompleteUserSchema()
-        else:
-            schema = CompleteUserSchema(only=fields)
-
-        return schema.dump(user)

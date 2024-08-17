@@ -60,3 +60,26 @@
 {"time": "2024-08-16 16:30:41,741", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
 {"time": "2024-08-16 16:31:16,650", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
 {"time": "2024-08-16 16:31:16,662", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 16:59:19,058", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 16:59:19,094", "level": "INFO", "message": "\nAdded Grocery Name Data: <GroceryName 3> \nAdded by user: 2"}
+{"time": "2024-08-16 17:02:06,948", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 17:02:06,959", "level": "INFO", "message": "\nAdded Grocery Name Data: <GroceryName 4> \nAdded by user: 1"}
+{"time": "2024-08-16 17:04:49,988", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 17:04:50,001", "level": "INFO", "message": "\nAdded Grocery Name Data: <GroceryName 5> \nAdded by user: 4"}
+{"time": "2024-08-16 17:05:27,738", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-name"}
+{"time": "2024-08-16 17:40:20,319", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 17:41:55,354", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 17:48:17,087", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 17:48:38,944", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 17:48:41,186", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 17:49:35,611", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 17:51:30,515", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 17:52:21,978", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 17:52:48,732", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-16 17:53:00,451", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-16 17:54:06,741", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 17:55:46,179", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 18:00:10,704", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 18:01:56,555", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 18:02:18,678", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}
+{"time": "2024-08-16 18:08:20,935", "level": "INFO", "message": "\nRequest URL: http://127.0.0.1:5000/v1/grocery-names"}

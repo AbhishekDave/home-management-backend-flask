@@ -13,6 +13,6 @@ refresh_api_bp = Blueprint('refresh_api', __name__)
 @jwt_required(refresh=True)
 def refresh():
     user_service = UserService(db)
-    current_user = user_service.find_current_user()
-    new_access_token = create_access_token(identity=current_user)
+    current_user_id = user_service.find_current_user_id()
+    new_access_token = create_access_token(identity=current_user_id)
     return jsonify(access_token=new_access_token)

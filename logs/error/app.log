@@ -37,3 +37,5 @@
 {"time": "2024-08-16 16:20:21,528", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
 {"time": "2024-08-16 16:23:04,503", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
 {"time": "2024-08-16 16:31:16,662", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-16 17:52:48,732", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-16 17:53:00,451", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}

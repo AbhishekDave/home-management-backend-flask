@@ -1,13 +1,32 @@
-# src/apis/grocery_api/grocery_type_post.py
+# src/apis/grocery_api/grocery_type_get.py
 
-from flask import Blueprint, request, jsonify, current_app
-from flask_jwt_extended import jwt_required, get_jwt_identity
-from sqlalchemy.exc import SQLAlchemyError
+from flask import Blueprint, request, current_app, jsonify
+from flask_jwt_extended import jwt_required
 
 from src.configs.development_config import db
-from src.decorators.unified_decorators.validate_request import validate_request
 
-from src.models.grocery_models.grocery_name_model import GroceryName
-from src.schemas.grocery_schemas.grocery_name_schema import GroceryNameSchema
+from src.services.user_services import UserService
+from src.services.grocery_services import GroceryService
+from src.services.serialization_services.grocery_serialization_service import GrocerySerializationService
 
-grocery_name_post_api_bp = Blueprint('grocery_name_api', __name__)
+grocery_name_get_api_bp = Blueprint('grocery_name_get_api', __name__)
+
+
+@grocery_name_get_api_bp.route('/grocery-names', methods=['GET'])
+@jwt_required()
+def get_grocery_names():
+    # Log the incoming request URL
+    api_url = request.url
+    current_app.logger.info(f"\nRequest URL: {api_url}")
+
+    user_service = UserService(db)
+    grocery_service = GroceryService(db)
+    grocery_serialization_service = GrocerySerializationService()
+
+    current_user_id = user_service.find_current_user_id()
+
+    grocery_name_list = grocery_service.find_all_grocery_names_by_user_id(current_user_id)
+
+    grocery_data_dump = grocery_serialization_service.serialize_grocery_names(grocery_name_list)
+
+    return jsonify(grocery_data_dump)
