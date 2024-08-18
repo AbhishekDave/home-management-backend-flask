@@ -1,4 +1,5 @@
 # src/schemas/auth_schemas/complete_user_schema.py
+
 import re
 
 from marshmallow import Schema, ValidationError, fields, validate, validates
@@ -38,6 +39,12 @@ class CompleteUserSchema(Schema):
 
     modified_at = fields.DateTime(dump_only=True)  # Provided in output
 
+    @property
+    def grocery_names(self):
+        from src.schemas.grocery_schemas.grocery_name_schema import GroceryNameSchema
+        user_groceries = fields.List(fields.Nested(GroceryNameSchema, many=True), dump_only=True)  # type: ignore
+        return user_groceries
+
     @validates('username')
     def validate_username(self, value):
         # Example custom validation for username
@@ -61,11 +68,6 @@ class CompleteUserSchema(Schema):
         email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$'
         if not re.match(email_regex, value):
             raise ValidationError("Invalid email format.")
-
-    @property
-    def grocery_names(self):
-        from src.schemas.grocery_schemas.grocery_name_schema import GroceryNameSchema
-        return fields.List(fields.Nested(GroceryNameSchema, many=True), dump_only=True)     # type: ignore
 
 
 user_schema = CompleteUserSchema()

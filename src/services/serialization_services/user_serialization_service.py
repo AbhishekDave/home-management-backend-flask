@@ -30,7 +30,7 @@ class UserSerializationService:
         return self.user_login_schema.dump(user)
 
     @staticmethod
-    def dump_all_users(user, fields=None):
+    def dump_user_schema(user, fields=None):
         """
         Serializes the user object using the CompleteUserSchema.
 

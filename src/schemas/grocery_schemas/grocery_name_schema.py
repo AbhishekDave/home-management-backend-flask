@@ -16,11 +16,7 @@ class GroceryNameSchema(Schema):
     is_active = fields.Boolean(dump_only=True)
     user_id = fields.Integer(dump_only=True)
 
-    # Use lazy loading by passing the schema class names as strings
-    # users = fields.List(fields.Nested('CompleteUserSchema'), dump_only=True)
-    # grocery_items = fields.List(fields.Nested('GroceryItemSchema'), dump_only=True)
-
-    # nested schemas for relationships
+    # Use lazy loading by passing the schema class names as function
     @property
     def users(self):
         from src.schemas.auth_schemas.complete_user_schema import CompleteUserSchema
