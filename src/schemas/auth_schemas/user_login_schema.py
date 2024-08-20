@@ -1,4 +1,4 @@
-# src/schemas/auth_schemas/complete_user_schema.py
+# src/schemas/auth_schemas/user_schema.py
 import re
 
 from marshmallow import Schema, ValidationError, fields, validate, validates

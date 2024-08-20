@@ -1,4 +1,4 @@
-# src/apis/grocery_api/grocery_type_post.py
+# src/apis/grocery_api/grocery_api_post.py
 
 from flask import Blueprint, request, current_app, jsonify
 from flask_jwt_extended import jwt_required
@@ -32,12 +32,10 @@ def add_grocery_type(**kwargs):
     current_user_id = user_service.find_current_user_id()
     grocery_name_data = g.validated_data
 
-    # name = kwargs.get('validated_data', {}).get('name')    # Access validated data
-
     try:
         new_grocery_name = grocery_service.create_grocery(grocery_name_data)
         current_app.logger.info(f"\nAdded Grocery Name Data: {new_grocery_name.name} \nAdded by user: {current_user_id}")
-        grocery_data_dump = grocery_serialization_service.dump_grocery_name_schema(new_grocery_name)
+        grocery_data_dump = grocery_serialization_service.serialize_grocery_names(new_grocery_name)
 
     except SQLAlchemyError as e:
         db.session.rollback()  # Rollback the session in case of an error

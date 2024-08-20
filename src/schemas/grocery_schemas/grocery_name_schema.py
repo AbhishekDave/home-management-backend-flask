@@ -16,17 +16,18 @@ class GroceryNameSchema(Schema):
     is_active = fields.Boolean(dump_only=True)
     user_id = fields.Integer(dump_only=True)
 
-    # Use lazy loading by passing the schema class names as function
-    @property
-    def users(self):
-        from src.schemas.auth_schemas.complete_user_schema import CompleteUserSchema
-        return fields.List(fields.Nested(CompleteUserSchema, many=True), dump_only=True)     # type: ignore
+    grocery_users = fields.Nested('UserSchema', only=("id", "first_name", "last_name"))        # type: ignore
 
-    @property
-    def grocery_items(self):
-        from src.schemas.grocery_schemas.grocery_item_schema import GroceryItemSchema
-        return fields.List(fields.Nested(GroceryItemSchema, many=True), dump_only=True)     # type: ignore
+    @staticmethod
+    def get_grocery_users(obj):
+        from src.schemas.auth_schemas.user_schema import UserSchema
+        return UserSchema(many=True).dump(obj.grocery_users)
+
+    @staticmethod
+    def get_grocery_items(obj):
+        from src.schemas.auth_schemas.user_schema import UserSchema
+        return UserSchema(many=True).dump(obj.grocery_users)     # type: ignore
 
 
-grocery_type_schema = GroceryNameSchema()
-grocery_types_schema = GroceryNameSchema(many=True)
+#   grocery_type_schema = GroceryNameSchema()
+#   grocery_types_schema = GroceryNameSchema(many=True)

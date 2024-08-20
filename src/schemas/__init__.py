@@ -1,7 +1,7 @@
 # src/schemas/__init__.py
 
 # auth models
-from .auth_schemas.complete_user_schema import CompleteUserSchema
+from .auth_schemas.user_schema import UserSchema
 from .auth_schemas.user_login_schema import UserLoginSchema
 from .auth_schemas.user_registration_schema import UserRegistrationSchema
 

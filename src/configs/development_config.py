@@ -15,7 +15,6 @@ from src.utils.error_handling_utility import common_error_handlers
 
 from src.utils.logging_utility.configure_logging import configure_logging
 
-
 db = SQLAlchemy()
 migrate = Migrate()
 jwt = JWTManager()
@@ -46,7 +45,7 @@ def create_app():
     app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(days=jwt_config.JWTConfig.ACCESS_TOKEN_EXPIRES_IN_1_DAY)
     app.config["JWT_REFRESH_TOKEN_EXPIRES"] = timedelta(days=jwt_config.JWTConfig.REFRESH_TOKEN_EXPIRES_IN_30_DAY)
 
-    # Initialize extensions
+    # Initialize database, flask-migrate and JWT extensions
     db.init_app(app)
     migrate.init_app(app, db)
     jwt.init_app(app)

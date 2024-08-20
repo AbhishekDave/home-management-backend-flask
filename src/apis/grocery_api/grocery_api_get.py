@@ -1,4 +1,4 @@
-# src/apis/grocery_api/grocery_type_get.py
+# src/apis/grocery_api/grocery_api_get.py
 
 from flask import Blueprint, request, current_app, jsonify
 from flask_jwt_extended import jwt_required
@@ -27,6 +27,7 @@ def get_grocery_names():
 
     grocery_name_list = grocery_service.find_all_grocery_names_by_user_id(current_user_id)
 
-    grocery_data_dump = grocery_serialization_service.serialize_grocery_names(grocery_name_list)
+    fields_to_exclude = []
+    grocery_data_dump = grocery_serialization_service.serialize_grocery_names(grocery_name_list, fields=fields_to_exclude)
 
     return jsonify(grocery_data_dump)

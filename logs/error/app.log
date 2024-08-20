@@ -39,3 +39,15 @@
 {"time": "2024-08-16 16:31:16,662", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
 {"time": "2024-08-16 17:52:48,732", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
 {"time": "2024-08-16 17:53:00,451", "level": "ERROR", "message": "Exception on /v1/auth/login [POST]"}
+{"time": "2024-08-18 07:37:51,977", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-18 07:57:20,065", "level": "ERROR", "message": "Exception on /v1/user/grocery-name-lists [GET]"}
+{"time": "2024-08-18 13:17:15,509", "level": "ERROR", "message": "Exception on /v1/user/grocery-names-lists [GET]"}
+{"time": "2024-08-18 13:20:59,778", "level": "ERROR", "message": "Exception on /v1/user/grocery-names-lists [GET]"}
+{"time": "2024-08-18 13:28:14,177", "level": "ERROR", "message": "Exception on /v1/user/grocery-names-lists [GET]"}
+{"time": "2024-08-18 13:35:35,884", "level": "ERROR", "message": "Exception on /v1/user/grocery-names-lists [GET]"}
+{"time": "2024-08-20 14:56:06,555", "level": "ERROR", "message": "Exception on /v1/grocery-names [GET]"}
+{"time": "2024-08-20 14:59:55,367", "level": "ERROR", "message": "Exception on /v1/grocery-names [GET]"}
+{"time": "2024-08-20 15:00:41,691", "level": "ERROR", "message": "Exception on /v1/grocery-name [POST]"}
+{"time": "2024-08-20 15:02:27,617", "level": "ERROR", "message": "Exception on /v1/grocery-names [GET]"}
+{"time": "2024-08-20 15:33:38,938", "level": "ERROR", "message": "Exception on /v1/grocery-names [GET]"}
+{"time": "2024-08-20 16:54:38,462", "level": "ERROR", "message": "Exception on /v1/grocery-names [GET]"}

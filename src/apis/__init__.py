@@ -8,12 +8,12 @@ from src.apis.auth_api.logout import logout_api_bp                              
 from src.apis.auth_api.protected import protected_api_bp                            # API endpoint: /v1/auth/protected
 from src.apis.auth_api.refresh import refresh_api_bp                                # API endpoint: /v1/auth/refresh
 
-from src.apis.user_api.user_type_get import user_api_get_bp                         # API endpoint: /v1/user/grocery-name-lists
+from src.apis.user_api.user_api_get import user_api_get_bp                         # API endpoint: /v1/user/grocery-name-lists
 
-from src.apis.grocery_api.grocery_type_post import grocery_name_post_api_bp
-from src.apis.grocery_api.grocery_type_get import grocery_name_get_api_bp
+from src.apis.grocery_api.grocery_api_post import grocery_name_post_api_bp
+from src.apis.grocery_api.grocery_api_get import grocery_name_get_api_bp
 
-from src.apis.store_api.store_type_post import store_api_post_bp
+from src.apis.store_api.store_api_post import store_api_post_bp
 
 
 def register_blueprint(app):
