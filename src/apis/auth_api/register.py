@@ -1,4 +1,4 @@
-# src/apis/auth_api/registration.py
+# src/apis/auth_api/register.py
 
 from flask import jsonify, Blueprint
 from flask_jwt_extended import create_access_token, create_refresh_token

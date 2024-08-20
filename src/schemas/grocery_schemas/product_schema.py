@@ -1,6 +1,5 @@
 # src/schemas/grocery_schemas/product_schema.py
 
-from datetime import datetime
 from marshmallow import Schema, fields, validate
 from src.models.grocery_models.grocery_item_model import GroceryItem
 
@@ -19,12 +18,12 @@ class ProductSchema(Schema):
     @property
     def grocery_type(self):
         from src.schemas.grocery_schemas.grocery_name_schema import GroceryNameSchema
-        return fields.Nested(GroceryNameSchema, dump_only=True)
+        return fields.Nested(GroceryNameSchema, dump_only=True)         # type: ignore
 
     @property
     def store(self):
         from src.schemas.grocery_schemas.store_schema import StoreSchema
-        return fields.Nested(StoreSchema, dump_only=True)
+        return fields.Nested(StoreSchema, dump_only=True)               # type: ignore
 
 
 product_schema = ProductSchema()

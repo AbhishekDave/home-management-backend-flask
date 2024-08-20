@@ -17,7 +17,7 @@ class GroceryItemSchema(Schema):
         @property
         def items(self):
             from src.schemas.grocery_schemas.grocery_name_schema import GroceryNameSchema
-            return fields.List(fields.Nested(GroceryNameSchema), dump_only=True)
+            return fields.List(fields.Nested(GroceryNameSchema), dump_only=True)        # type: ignore
 
 
 grocery_item_schema = GroceryItemSchema()

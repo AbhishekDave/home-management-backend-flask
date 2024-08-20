@@ -21,12 +21,12 @@ class StoreProductMappingSchema(Schema):
     @property
     def store(self):
         from src.schemas.grocery_schemas.store_schema import StoreSchema
-        return fields.Nested(StoreSchema, dump_only=True)
+        return fields.Nested(StoreSchema, dump_only=True)               # type: ignore
 
     @property
     def product(self):
         from src.schemas.grocery_schemas.product_schema import ProductSchema
-        return fields.Nested(ProductSchema, dump_only=True)
+        return fields.Nested(ProductSchema, dump_only=True)             # type: ignore
 
     @validates('price')
     def validate_price(self, price):
