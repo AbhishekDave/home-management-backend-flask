@@ -16,7 +16,7 @@ register_api_bp = Blueprint('register_api', __name__)
 
 
 @register_api_bp.route('/register', methods=['POST'])
-@validate_request('POST', schema=UserRegistrationSchema())
+@validate_request('POST', schema_class=UserRegistrationSchema)
 @auth_requires_at_registration
 def register():
 
@@ -31,7 +31,7 @@ def register():
         return jsonify({'message': str(e)}), 400
 
     # Create response (excluding password)
-    user_data_dump = user_serialization_service.dump_user_registration_schema(new_user)
+    user_data_dump = user_serialization_service.serialize_user_data(new_user)
     access_token = create_access_token(identity=new_user.id)
     refresh_token = create_refresh_token(identity=new_user.id)
 
