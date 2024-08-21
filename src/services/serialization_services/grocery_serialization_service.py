@@ -19,7 +19,10 @@ class GrocerySerializationService:
         return GroceryNameSchema(many=True)
 
     def serialize_grocery_names(self, grocery_name_list, fields=None):
-        schema = self._get_grocery_names_schema()
+        if isinstance(grocery_name_list, list):
+            schema = self._get_grocery_names_schema()
+        else:
+            schema = self._get_grocery_name_schema()
         if fields:
             schema = GroceryNameSchema(many=True, exclude=fields)
         return schema.dump(grocery_name_list)

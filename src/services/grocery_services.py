@@ -26,7 +26,7 @@ class GroceryService:
         # Check if the grocery name already exists for the user
         existing_grocery_name = self.find_grocery_name_by_user_and_name(current_user_id, grocery_name_data['name'])
         if existing_grocery_name is not None:
-            raise ConflictException(f"Grocery Name '{existing_grocery_name.name}' already exists.")
+            raise ConflictException(f"Grocery Name already exists.")
 
         try:
             self.grocery_repository.add_grocery_name(new_grocery_name)

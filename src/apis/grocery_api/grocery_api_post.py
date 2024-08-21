@@ -19,8 +19,8 @@ grocery_name_post_api_bp = Blueprint('grocery_name_post_api', __name__)
 
 @grocery_name_post_api_bp.route('/grocery-name', methods=['POST'])
 @jwt_required()
-@validate_request('POST', schema=GroceryNameSchema())
-def add_grocery_type(**kwargs):
+@validate_request('POST', schema_class=GroceryNameSchema)
+def add_grocery_name(**kwargs):
     # Log the incoming request URL
     api_url = request.url
     current_app.logger.info(f"\nRequest URL: {api_url}")
@@ -30,12 +30,24 @@ def add_grocery_type(**kwargs):
     grocery_serialization_service = GrocerySerializationService()
 
     current_user_id = user_service.find_current_user_id()
+
     grocery_name_data = g.validated_data
 
+    created_grocery_names = []
+
     try:
-        new_grocery_name = grocery_service.create_grocery(grocery_name_data)
-        current_app.logger.info(f"\nAdded Grocery Name Data: {new_grocery_name.name} \nAdded by user: {current_user_id}")
-        grocery_data_dump = grocery_serialization_service.serialize_grocery_names(new_grocery_name)
+        if isinstance(grocery_name_data, list):
+            for grocery_name in grocery_name_data:
+                new_grocery_name = grocery_service.create_grocery(grocery_name)
+                current_app.logger.info(f"\nAdded Grocery Name Data: {new_grocery_name.name} \nAdded by user: {current_user_id}")
+                created_grocery_names.append(new_grocery_name)
+        else:
+            new_grocery_name = grocery_service.create_grocery(grocery_name_data)
+            current_app.logger.info(f"\nAdded Grocery Name Data: {new_grocery_name.name} \nAdded by user: {current_user_id}")
+            created_grocery_names.append(new_grocery_name)
+
+        fields_to_exclude = []
+        grocery_data_dump = grocery_serialization_service.serialize_grocery_names(created_grocery_names, fields=fields_to_exclude)
 
     except SQLAlchemyError as e:
         db.session.rollback()  # Rollback the session in case of an error
