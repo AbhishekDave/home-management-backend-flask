@@ -24,10 +24,10 @@ class UserRegistrationSchema(Schema):
 
     email = fields.Email(required=True)  # Provided in both input and output
 
-    address = fields.String(load_only=True,
+    address = fields.String(required=False, load_only=True,
                             validate=validate.Length(min=200))  # Sensitive data; only for input
 
-    phone = fields.String(allow_none=True, load_only=True,
+    phone = fields.String(required=False, allow_none=True, load_only=True,
                           validate=validate.Length(min=10, max=15))  # Sensitive data; only for input
 
     is_active = fields.Boolean(dump_only=True, default=True)  # Provided in output
@@ -61,6 +61,3 @@ class UserRegistrationSchema(Schema):
         email_regex = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(?:\.[a-zA-Z]{2,})?$'
         if not re.match(email_regex, value):
             raise ValidationError("Invalid email format.")
-
-
-user_schema = UserRegistrationSchema()

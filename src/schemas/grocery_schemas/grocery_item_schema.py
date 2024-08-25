@@ -14,11 +14,4 @@ class GroceryItemSchema(Schema):
         created_at = fields.DateTime(dump_only=True)
         modified_at = fields.DateTime(dump_only=True)
 
-        @property
-        def items(self):
-            from src.schemas.grocery_schemas.grocery_name_schema import GroceryNameSchema
-            return fields.List(fields.Nested(GroceryNameSchema), dump_only=True)        # type: ignore
-
-
-grocery_item_schema = GroceryItemSchema()
-grocery_items_schema = GroceryItemSchema(many=True)
+        item_in_groceries = fields.Nested('GroceryItemSchema', dump_only=True)          # type: ignore

@@ -16,7 +16,7 @@ store_api_post_bp = Blueprint('store_api_post', __name__)
 
 @store_api_post_bp.route('/stores', methods=['POST'])
 @jwt_required()
-@validate_request('POST', schema=StoreSchema())
+@validate_request('POST', schema_class=StoreSchema)
 def create_store():
     # Log the incoming request URL
     api_url = request.url
