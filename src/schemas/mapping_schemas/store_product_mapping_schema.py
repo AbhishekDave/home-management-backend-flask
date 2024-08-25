@@ -18,16 +18,6 @@ class StoreProductMappingSchema(Schema):
         created_at = fields.DateTime(dump_only=True)
         modified_at = fields.DateTime(dump_only=True)
 
-    @property
-    def store(self):
-        from src.schemas.grocery_schemas.store_schema import StoreSchema
-        return fields.Nested(StoreSchema, dump_only=True)
-
-    @property
-    def product(self):
-        from src.schemas.grocery_schemas.product_schema import ProductSchema
-        return fields.Nested(ProductSchema, dump_only=True)
-
     @validates('price')
     def validate_price(self, price):
         if price <= 0:

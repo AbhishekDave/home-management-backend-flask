@@ -8,10 +8,10 @@ from src.configs.development_config import db
 class Store(db.Model):
     __tablename__ = 'store'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), unique=True, nullable=False)
+    name = db.Column(db.String(80), unique=True, nullable=False, index=True)
     description = db.Column(db.Text, nullable=True)
-    location = db.Column(db.String(80), nullable=True)
+    location = db.Column(db.String(80), nullable=True, index=True)
     created_at = db.Column(db.DateTime, default=datetime.now(ZoneInfo('UTC')))
-    modified_at = db.Column(db.DateTime, default=datetime.now(ZoneInfo('UTC')))
+    modified_at = db.Column(db.DateTime, default=datetime.now(ZoneInfo('UTC')), onupdate=datetime.now(ZoneInfo('UTC')))
 
-    products = db.relationship('Product', secondary='store_product_mapping', backref=db.backref('store', lazy='dynamic'))
+    products = db.relationship('Product', secondary='store_product_mapping', backref=db.backref('stores', lazy='joined'))

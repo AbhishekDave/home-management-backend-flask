@@ -1,4 +1,4 @@
-# src/schemas/auth_schemas/complete_user_schema.py
+# src/schemas/auth_schemas/user_schema.py
 import re
 
 from marshmallow import Schema, ValidationError, fields, validate, validates
@@ -42,6 +42,3 @@ class UserLoginSchema(Schema):
     def validate_password(self, value):
         if len(value) < 6:
             raise ValidationError("Password must be at least 6 characters long.")
-
-
-user_schema = UserLoginSchema()

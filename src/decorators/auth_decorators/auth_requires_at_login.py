@@ -4,9 +4,8 @@ from functools import wraps
 from flask import request, g
 
 from src.configs.development_config import db
-from src.services.user_service import UserService
-from src.utils.exceptions import (MethodNotAllowedException, MissingCredentialsException,
-                                  CredentialsUnauthorizedException, MissingDataException)
+from src.services.user_services import UserService
+from src.utils.error_handling_utility.exceptions import (MethodNotAllowedException, CredentialsUnauthorizedException, MissingDataException)
 
 
 def auth_requires_at_login(f):

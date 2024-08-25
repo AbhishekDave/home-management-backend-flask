@@ -16,11 +16,7 @@ class StoreSchema(Schema):
     created_at = fields.DateTime(dump_only=True)
     modified_at = fields.DateTime(dump_only=True)
 
-    # add nested schemas for relationships
-    @property
-    def products(self):
-        from src.schemas.grocery_schemas.product_schema import ProductSchema
-        return fields.List(fields.Nested(ProductSchema, many=True), dump_only=True)
+    products = fields.Nested('ProductSchema', only=("id", "name", "type"))              # type: ignore
 
     @validates('name')
     def validate_name(self, value):
@@ -44,10 +40,6 @@ class StoreSchema(Schema):
         # Example: Ensure the location is a valid format (e.g., address-like structure)
         if value:
             # Simple regex for address validation (can be more complex based on requirements)
-            address_regex = re.compile(r'^[\d\w\s,.]+$')
+            address_regex = re.compile(r'^[\w\s,.]+$')
             if not address_regex.match(value):
                 raise ValidationError("Location format is invalid. Please use a valid address format.")
-
-
-store_schema = StoreSchema()
-stores_schema = StoreSchema(many=True)

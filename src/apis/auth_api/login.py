@@ -10,7 +10,7 @@ login_api_bp = Blueprint('login_api', __name__)
 
 
 @login_api_bp.route('/login', methods=['POST'])
-@validate_request('POST', schema=UserLoginSchema())
+@validate_request('POST', schema_class=UserLoginSchema)
 @auth_requires_at_login
 def login():
     """

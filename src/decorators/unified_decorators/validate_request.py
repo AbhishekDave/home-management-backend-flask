@@ -4,10 +4,10 @@ from functools import wraps
 from flask import request, jsonify, g
 from marshmallow import ValidationError
 
-from src.utils.exceptions import MethodNotAllowedException, UnsupportedMediaTypeException, MissingDataException
+from src.utils.error_handling_utility.exceptions import MethodNotAllowedException, UnsupportedMediaTypeException, MissingDataException
 
 
-def validate_request(method, schema=None):
+def validate_request(method, schema_class=None):
     def decorator(f):
         @wraps(f)
         def decorated_function(*args, **kwargs):
@@ -24,14 +24,23 @@ def validate_request(method, schema=None):
             if not data:
                 raise MissingDataException('No input data provided.')
 
-            # Validate data using Marshmallow schema if provided
-            if schema:
+            # Validate data using Marshmallow schema for multiple or single object on provided
+            if schema_class:
                 try:
+                    # Create an instance of the schema class
+                    if isinstance(data, list):
+                        # Validate as a list of objects
+                        schema = schema_class(many=True)
+                    else:
+                        # Validate as a single object
+                        schema = schema_class()
+
+                    # Load and validated
                     validated_data = schema.load(data)
+                    # Add validated data to g for global access
+                    g.validated_data = validated_data
                 except ValidationError as err:
                     return jsonify(err.messages), 400
-                # Add validated data to kwargs
-                g.validated_data = validated_data
 
             return f(*args, **kwargs)
         return decorated_function

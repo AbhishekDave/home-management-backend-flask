@@ -4,8 +4,8 @@ from functools import wraps
 from flask import request
 
 from src.configs.development_config import db
-from src.utils.exceptions import MissingDataException, ConflictException
-from src.services.user_service import UserService
+from src.utils.error_handling_utility.exceptions import MissingDataException, ConflictException
+from src.services.user_services import UserService
 
 
 def auth_requires_at_registration(f):
