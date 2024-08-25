@@ -18,16 +18,4 @@ class GroceryNameSchema(Schema):
 
     grocery_users = fields.Nested('UserSchema', only=("id", "first_name", "last_name"))        # type: ignore
 
-    @staticmethod
-    def get_grocery_users(obj):
-        from src.schemas.auth_schemas.user_schema import UserSchema
-        return UserSchema(many=True).dump(obj.grocery_users)
-
-    @staticmethod
-    def get_grocery_items(obj):
-        from src.schemas.auth_schemas.user_schema import UserSchema
-        return UserSchema(many=True).dump(obj.grocery_users)     # type: ignore
-
-
-#   grocery_type_schema = GroceryNameSchema()
-#   grocery_types_schema = GroceryNameSchema(many=True)
+    grocery_items = fields.List(fields.Nested('GroceryItemSchema', only=("item_id",)), dump_only=True)        # type: ignore
