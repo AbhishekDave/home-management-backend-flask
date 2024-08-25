@@ -2,7 +2,6 @@
 
 from flask_jwt_extended import get_jwt_identity
 
-from src.configs.development_config import db
 from src.repositories.user_repository import UserRepository, User
 from src.utils import NotFoundException
 
@@ -50,7 +49,10 @@ class UserService:
         :param user_id: The ID of the user.
         :return: The user object or None if not found.
         """
-        return self.user_repository.get_user_by_id(user_id)
+        user = self.user_repository.get_user_by_id(user_id)
+        if not user:
+            raise NotFoundException('User not found.')
+        return user
 
     def find_user_by_username(self, username):
         """
@@ -90,10 +92,39 @@ class UserService:
 
     def find_user_with_groceries(self, user_id):
         """
-        Searches for a user by their groceries.
+        Searches for a user by their grocery.
         :param user_id: The ID of the user.
         :return: The user object with groceries as a List or None if not found.
         """
+        user = self.user_repository.get_user_with_grocery(user_id, load_groceries=True)
+        if not user:
+            raise NotFoundException(f'User_ID {user_id} not found.')
+        return user
+
+# UPDATE Operations
+    def update_new_password(self, username_or_email, new_password):
+        """
+        Updates a user's password.
+        :param username_or_email: The user's username or email.
+        :param new_password: The new password.
+        :return: The updated user object.
+        """
+        user = self.find_user_by_username_or_email(username_or_email)
+        if not user:
+            raise NotFoundException(f'User_ID {username_or_email} not found.')
+        self.user_repository.set_new_password(user, new_password)
+        return user
+
+
+# DELETE Operations
+# Implement delete operations if needed, e.g., def delete_user(self, user_id): ...
+
+"""    def find_user_with_groceries(self, user_id):
+
+        Searches for a user by their groceries.
+        :param user_id: The ID of the user.
+        :return: The user object with groceries as a List or None if not found.
+
         from src.services.grocery_services import GroceryService
         grocery_service = GroceryService(db)
         user = self.find_user_by_id(user_id)
@@ -103,8 +134,4 @@ class UserService:
         grocery_lists = grocery_service.find_all_grocery_names_by_user_id(user_id)
         user.user_groceries = grocery_lists
         return user
-
-    # UPDATE Operations
-
-    # DELETE Operations
-    # Implement delete operations if needed, e.g., def delete_user(self, user_id): ...
+    """

@@ -31,7 +31,7 @@ def register():
         return jsonify({'message': str(e)}), 400
 
     # Create response (excluding password)
-    user_data_dump = user_serialization_service.serialize_user_data(new_user)
+    user_data_dump = user_serialization_service.serialize_user_registration_data(new_user)
     access_token = create_access_token(identity=new_user.id)
     refresh_token = create_refresh_token(identity=new_user.id)
 

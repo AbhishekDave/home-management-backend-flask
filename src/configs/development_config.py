@@ -25,7 +25,8 @@ API_VERSION_1 = CORSConfig.API_VERSION
 # JWT configuration
 # node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 CURRENT_TIME_AT_TIMEZONE = datetime.now(ZoneInfo('UTC'))
-ACCESS_EXPIRES_MINUTES = timedelta(days=jwt_config.JWTConfig.ACCESS_TOKEN_EXPIRES_IN_1_DAY)
+ACCESS_EXPIRES_IN_5_MIN = timedelta(minutes=jwt_config.JWTConfig.ACCESS_TOKEN_EXPIRES_IN_5_MIN)
+ACCESS_EXPIRES_IN_A_DAY = timedelta(days=jwt_config.JWTConfig.ACCESS_TOKEN_EXPIRES_IN_1_DAY)
 REFRESH_EXPIRES_DAYS = timedelta(days=jwt_config.JWTConfig.REFRESH_TOKEN_EXPIRES_IN_30_DAY)
 
 # Redis Client
